@@ -1,0 +1,58 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>AppCenter Track Full Event</Title>
+            <Shortcut>atef</Shortcut>
+            <Description>Code Snippet for tracking full events in AppCenter</Description>
+            <Author>Kirk Patrick Junsay</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>eventName</ID>
+                    <Default>"Event Name"</Default>
+                    <ToolTip>Replace with name of the Event you want.</ToolTip>
+                </Literal>
+                <Literal>
+                    <ID>appId</ID>
+                    <Default>"Application ID"</Default>
+                    <ToolTip>Replace with App ID of the Application</ToolTip>
+                </Literal>
+                <Literal>
+                    <ID>appVersion</ID>
+                    <Default>"1.0.0.0"</Default>
+                    <ToolTip>Replace with the current version of the Application</ToolTip>
+                </Literal>
+                <Literal>
+                    <ID>appDetails</ID>
+                    <Default>"This is just a sample details of the event that happend."</Default>
+                    <ToolTip>Replace with the detail you want to associate with the event</ToolTip>
+                </Literal>                
+            </Declarations>
+            <Code Language="csharp" Format="CData">
+                <![CDATA[
+
+                    Analytics.TrackEvent($eventName$, new Dictionary<string, string>
+                    {
+                        {"AppID", $appId$},
+                        {"AppVersion", $appVersion$},
+                        {"Date",  DateTime.Now.Date.ToString("MM/dd/yyyy HH:mm tt")},
+                        {"Details", $appDetails$}
+                    });
+
+                ]]>
+            </Code>
+            <Imports>
+                <Import>
+                    <Namespace>Microsoft.AppCenter.Analytics</Namespace>
+                </Import>
+                <Import>
+                    <Namespace>System.Collections.Generic</Namespace>
+                </Import>                
+            </Imports>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

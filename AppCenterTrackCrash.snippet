@@ -1,0 +1,57 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>AppCenter Track Crash</Title>
+            <Shortcut>atc</Shortcut>
+            <Description>Code Snippet for tracking crashes in AppCenter</Description>
+            <Author>Kirk Patrick Junsay</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>appException</ID>
+                    <Default>new Exception()</Default>
+                    <ToolTip>Replace with the actual exception occurred in the Application.</ToolTip>
+                </Literal>
+                <Literal>
+                    <ID>appId</ID>
+                    <Default>"Application ID"</Default>
+                    <ToolTip>Replace with App ID of the Application</ToolTip>
+                </Literal>
+                <Literal>
+                    <ID>appVersion</ID>
+                    <Default>"1.0.0.0"</Default>
+                    <ToolTip>Replace with the current version of the Application</ToolTip>
+                </Literal>
+                <Literal>
+                    <ID>appDetails</ID>
+                    <Default>"This is just a sample details of the crash that happend."</Default>
+                    <ToolTip>Replace with the detail you want to associate with the event</ToolTip>
+                </Literal>                
+            </Declarations>
+            <Code Language="csharp" Format="CData">
+                <![CDATA[
+
+                    Crashes.TrackError($appException$, new Dictionary<string, string> {
+                            {"AppID", $appId$},
+                            {"AppVersion", $appVersion$},
+                            {"Date",  DateTime.Now.Date.ToString("MM/dd/yyyy HH:mm tt")},
+                            {"Details", $appDetails$}
+                         });
+
+                ]]>
+            </Code>
+            <Imports>
+                <Import>
+                    <Namespace>Microsoft.AppCenter.Crashes</Namespace>
+                </Import>
+                <Import>
+                    <Namespace>System.Collections.Generic</Namespace>
+                </Import>                
+            </Imports>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

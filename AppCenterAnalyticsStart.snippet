@@ -1,0 +1,44 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>AppCenter Start Analytics</Title>
+            <Shortcut>as</Shortcut>
+            <Description>Code Snippet for starting App Center Analytics</Description>
+            <Author>Kirk Patrick Junsay</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>iosSecret</ID>
+                    <Default>00000000-0000-0000-0000-000000000000</Default>
+                    <ToolTip>Replace with actual app secret generated for iOS.</ToolTip>
+                </Literal>     
+                <Literal>
+                    <ID>androidSecret</ID>
+                    <Default>00000000-0000-0000-0000-000000000000</Default>
+                    <ToolTip>Replace with actual app secret generated for android.</ToolTip>
+                </Literal>     
+                <Literal>
+                    <ID>uwpSecret</ID>
+                    <Default>00000000-0000-0000-0000-000000000000</Default>
+                    <ToolTip>Replace with actual app secret generated for UWP.</ToolTip>
+                </Literal>        
+            </Declarations>
+            <Code Language="csharp" Format="CData">
+                <![CDATA[
+                    
+                    AppCenter.Start("ios={$iosSecret$};android={$androidSecret$};uwp={$uwpSecret$}", typeof(Analytics));
+
+                ]]>
+            </Code>
+            <Imports>
+                <Import>
+                    <Namespace>Microsoft.AppCenter</Namespace>
+                </Import>             
+            </Imports>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>
